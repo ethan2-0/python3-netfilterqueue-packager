@@ -66,4 +66,4 @@ Description: An object-oriented Python interface to libnetfilter_queue (Python 3
 X-Python3-Version: >=3.$py3_version <<3.$py3_nextversion
 EOF
 
-dpkg -b package/ python3-netfilterqueue_$package_version_$architecture.deb
+dpkg -b package/ python3-netfilterqueue_${package_version}_${architecture}.deb
