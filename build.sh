@@ -40,19 +40,14 @@ echo "Package installed size: $du_total kilobytes"
 py3_version=$(python3 -c "import sys; print(sys.version_info.minor)")
 py3_nextversion=$(( $py3_version + 1 ))
 
-echo "Current Python 3 version: $py3_version, next version: $py3_nextversion"
+echo "Python 3 version: 3.$py3_version, next version: 3.$py3_nextversion"
 
-# Determine the architecture. Note that this has only ever been tested on amd64.
-# The documentation does seem to suggest that it would work at least for i386.
-architecture=$(uname -m)
-if [[ $architecture == "x86_64" ]]; then
-    architecture="amd64"
-fi
+architecture=$(dpkg --print-architecture)
 
 cat > package/DEBIAN/control << EOF
 Package: python3-netfilterqueue
 Version: $package_version
-Source: kti/python-netfilterqueue ($package_version)
+Source: https://github.com/kti/python-netfilterqueue
 Architecture: $architecture
 Essential: no
 Section: web
