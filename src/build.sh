@@ -46,8 +46,9 @@ python setup.py install
 
 echo "[Build] Copying binaries to package directory..."
 
-cp lib/python3*/site-packages/NetfilterQueue-0.7.egg-info ../package/usr/lib/python3/dist-packages
-# Note: This assumes that there is only one .so in lib/python3*/site-packages.
-# This is true right now; but it may require updating in later versions of the script
-cp lib/python3*/site-packages/*.so ../package/usr/lib/python3/dist-packages
+src_dir=$(pwd)
+cd lib/python3*/site-packages
+cp NetfilterQueue*.egg-info $src_dir/../package/usr/lib/python3/dist-packages
+cp netfilterqueue*.so $src_dir/../package/usr/lib/python3/dist-packages
+cd $src_dir
 deactivate

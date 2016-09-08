@@ -26,6 +26,11 @@ if ! ./build.sh "$archive_url" $archive_sha256; then
 fi
 cd ..
 
+# Create an md5sums file
+cd package
+find * | grep -v DEBIAN | xargs md5sum > DEBIAN/md5sums
+cd ..
+
 # Calculate the installed size
 
 egg_info_du=$(du --block-size 1K package/usr/lib/python3/dist-packages/NetfilterQueue-0.7.egg-info | cut -f1)
